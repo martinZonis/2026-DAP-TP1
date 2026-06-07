@@ -9,11 +9,27 @@ class Login extends StatefulWidget {
   State<Login> createState() => _LoginScreenState();
 }
 
+class User {
+  String username;
+  String password;
+  User(this.username, this.password);
+  bool userVerify(String inputUsername) {
+    return username == inputUsername;
+  }
+  bool passVerify(String inputPassword) {
+    return password == inputPassword;
+  }
+}
+
 class _LoginScreenState extends State<Login> {
   static const String mail = 'correo@gmail.com';
   static const String clave = 'Clave';
+  var user = User(mail, clave);
+
   TextEditingController emailInput = TextEditingController();
   TextEditingController passwordInput = TextEditingController();
+
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -64,19 +80,22 @@ class _LoginScreenState extends State<Login> {
             child: Builder(
               builder: (context) {
                 return ElevatedButton(
-                  onPressed: () {
+                  onPressed: () {                 
+                                       
                     String email = emailInput.text;
                     String pass = passwordInput.text;
                     String message;
 
                     if (email.isEmpty || pass.isEmpty) {
                       message = 'Ingrese su mail y contraseña';
-                    } else if (email != mail || pass != clave) {
-                      message = 'Correo o contraseña incorrectos';
-                    } else {
-                      message = 'Inicio de sesión exitoso';
-                      context.push('/home');
-                    }
+                    } else{
+                      if (!user.userVerify(email) || !user.passVerify(pass)) {
+                        message = 'Correo o contraseña incorrectos';
+                      } else {
+                        message = 'Inicio de sesión exitoso';
+                        context.push('/home');
+                      }
+                    } 
 
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
