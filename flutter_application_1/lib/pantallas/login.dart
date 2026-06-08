@@ -33,20 +33,23 @@ class _LoginScreenState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    const textColor = Color(0xFF013e37);
+    const bgColor = Color(0xFFffefb3);
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: bgColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 10),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 10),
             child: Text(
               "Si ya posee una cuenta, inicie sesión.",
               style: TextStyle(
                 fontSize: 28.0,
                 fontStyle: FontStyle.italic,
                 fontWeight: FontWeight.bold,
-                color: Colors.brown,
+                color: textColor,
                 letterSpacing: 1.5, // Espaciado entre letras
               ),
             ),
@@ -54,13 +57,22 @@ class _LoginScreenState extends State<Login> {
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 10),
-
             child: TextField(
               controller: emailInput,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.email),
+              style: const TextStyle(color: textColor),
+              decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.email, color: textColor),
                 hintText: 'Ingrese su correo',
-                border: OutlineInputBorder(),
+                hintStyle: TextStyle(color: textColor),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: textColor),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: textColor, width: 2.0),
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: textColor),
+                ),
               ),
             ),
           ),
@@ -68,10 +80,21 @@ class _LoginScreenState extends State<Login> {
             padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 10),
             child: TextField(
               controller: passwordInput,
-              decoration: InputDecoration(
+              style: const TextStyle(color: textColor),
+              obscureText: true,
+              decoration: const InputDecoration(
                 hintText: 'Ingrese su contraseña',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.password),
+                hintStyle: TextStyle(color: textColor),
+                prefixIcon: Icon(Icons.password, color: textColor),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: textColor),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: textColor, width: 2.0),
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: textColor),
+                ),
               ),
             ),
           ),
@@ -99,17 +122,17 @@ class _LoginScreenState extends State<Login> {
 
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text(message),
-                        backgroundColor: Colors.brown,
-                        duration: Duration(seconds: 3),
+                        content: Text(message, style: const TextStyle(color: bgColor)),
+                        backgroundColor: textColor,
+                        duration: const Duration(seconds: 3),
                         behavior: SnackBarBehavior.floating,
                       ),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.brown, // Color de fondo del botón
+                    backgroundColor: textColor, // Color de fondo del botón
                     foregroundColor:
-                        Colors.white, // Color del texto e íconos internos
+                        bgColor, // Color del texto e íconos internos
                     minimumSize: const Size(
                       200,
                       50,
@@ -121,7 +144,7 @@ class _LoginScreenState extends State<Login> {
                       ), // Bordes redondeados del botón
                     ),
                   ),
-                  child: Text('Confirmar'),
+                  child: const Text('Confirmar', style: TextStyle(fontWeight: FontWeight.bold)),
                 );
               },
             ),
