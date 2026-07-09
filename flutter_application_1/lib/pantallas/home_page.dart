@@ -10,11 +10,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<Product> products = [];
-  final TextEditingController nameAnswered = TextEditingController();
-  final TextEditingController descAnswered = TextEditingController();
-  final TextEditingController priceAnswered = TextEditingController();
-  final TextEditingController stockAnswered = TextEditingController();
+  final List<Apps> applications = [
+    Apps("App 1", "Description 1", "image1.png"),
+    Apps("App 2", "Description 2", "image2.png"),
+    Apps("App 3", "Description 3", "image3.png"),
+  ];
   String message = "";
 
 
@@ -32,69 +32,29 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
-              "Ingrese un nuevo producto en el sistema",
-              style: TextStyle(color: textColor, fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const Text("Nombre del producto", style: TextStyle(color: textColor)),
-            TextField(controller: nameAnswered, textAlign: TextAlign.center, style: const TextStyle(color: textColor)),
-            const Text("Descripción", style: TextStyle(color: textColor)),
-            TextField(controller: descAnswered, textAlign: TextAlign.center, style: const TextStyle(color: textColor)),
-            const Text("Precio", style: TextStyle(color: textColor)),
-            TextField(controller: priceAnswered, textAlign: TextAlign.center, style: const TextStyle(color: textColor)),
-            const Text("Stock", style: TextStyle(color: textColor)),
-            TextField(controller: stockAnswered, textAlign: TextAlign.center, style: const TextStyle(color: textColor)),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: textColor),
-              onPressed: () {
-                setState(() {
-                  if (nameAnswered.text.isNotEmpty &&
-                      descAnswered.text.isNotEmpty &&
-                      priceAnswered.text.isNotEmpty &&
-                      stockAnswered.text.isNotEmpty) {
-                    products.add(Product(
-                      nameAnswered.text,
-                      descAnswered.text,
-                      double.tryParse(priceAnswered.text) ?? 0.0,
-                      int.tryParse(stockAnswered.text) ?? 0,
-                    ));
-                    message = "Producto agregado exitosamente";
-                  } else {
-                    message = "Por favor, complete todos los campos";
-                  }
-                });
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(message, style: const TextStyle(color: bgColor)),
-                    backgroundColor: textColor,
-                    duration: const Duration(seconds: 3),
-                    behavior: SnackBarBehavior.floating,
-                  ),
-                );
-              },
-              child: const Text("Submit", style: TextStyle(color: bgColor, fontWeight: FontWeight.bold)),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: textColor),
-              onPressed: () {
-                if (products.isNotEmpty) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ResultPage(products: products)),
-                  );
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("La lista está vacía, agrega un producto primero", style: TextStyle(color: bgColor)),
-                      backgroundColor: textColor,
-                      duration: Duration(seconds: 3),
-                      behavior: SnackBarBehavior.floating,
-                    ),
-                  );
-                }
-              },
-              child: const Text("Ver Resultados", style: TextStyle(color: bgColor, fontWeight: FontWeight.bold)),
-            ),
+            //ESTE ES EL MAIN
+            ListView.builder(
+            itemCount: applications.length, // 1. Le decís cuántos elementos tiene tu lista
+            itemBuilder: (context, index) { // 2. Dibujás cada fila usando su posición (index)
+            final elemento = applications[index];
+    
+            return ListTile(
+              leading: Image.network(
+              elemento.image, // La URL de la imagen 
+              width: 50, 
+              height: 50, 
+              fit: BoxFit.cover,
+            ), // La imagen a la izquierda
+          title: Text(elemento.name), // El título principal
+          subtitle: Text(elemento.description), // La descripción abajo del título
+          trailing: const Icon(Icons.arrow_forward_ios, size: 16), // Una flechita coqueta a la derecha
+          onTap: () {
+        // Acá vas a programar la navegación a la pantalla de detalle
+          print("Tocaste: ${elemento.name}");
+      },
+    );
+  },
+)
           ],
         ),
       ),

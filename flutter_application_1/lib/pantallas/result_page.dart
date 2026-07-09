@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/product.dart';
 
 class ResultPage extends StatelessWidget {
-  final List<Product> products;
+  final List<Apps> products;
 
   const ResultPage({super.key, required this.products});
 
@@ -43,4 +43,4 @@ class ResultPage extends StatelessWidget {
       ),
     );
   }
-}
+} */
