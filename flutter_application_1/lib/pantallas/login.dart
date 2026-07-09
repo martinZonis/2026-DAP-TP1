@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_application_1/classes/product.dart';
 //context.go('/home')
 
 class Login extends StatefulWidget {
@@ -9,23 +10,7 @@ class Login extends StatefulWidget {
   State<Login> createState() => _LoginScreenState();
 }
 
-class User {
-  String username;
-  String password;
-  User(this.username, this.password);
-  bool userVerify(String inputUsername) {
-    return username == inputUsername;
-  }
-  bool passVerify(String inputPassword) {
-    return password == inputPassword;
-  }
-}
-
 class _LoginScreenState extends State<Login> {
-  static const String mail = 'correo@gmail.com';
-  static const String clave = 'Clave';
-  var user = User(mail, clave);
-
   TextEditingController emailInput = TextEditingController();
   TextEditingController passwordInput = TextEditingController();
 
@@ -112,7 +97,8 @@ class _LoginScreenState extends State<Login> {
                     if (email.isEmpty || pass.isEmpty) {
                       message = 'Ingrese su mail y contraseña';
                     } else{
-                      if (!user.userVerify(email) || !user.passVerify(pass)) {
+                      bool isValid = User.users.any((u) => u.username == email && u.password == pass);
+                      if (!isValid) {
                         message = 'Correo o contraseña incorrectos';
                       } else {
                         message = 'Inicio de sesión exitoso';

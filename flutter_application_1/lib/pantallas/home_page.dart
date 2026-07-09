@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter_application_1/classes/product.dart';
-import 'package:flutter_application_1/pantallas/result_page.dart';
+import 'package:flutter_application_1/pantallas/app_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,9 +12,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<Apps> applications = [
-    Apps("App 1", "Description 1", "image1.png"),
-    Apps("App 2", "Description 2", "image2.png"),
-    Apps("App 3", "Description 3", "image3.png"),
+    Apps("App 1", "Description 1", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMDNfdGWROrcANcGEOe9KxlQC8c6-ZRRjMWDvtv5hM7g&s=10"),
+    Apps("App 2", "Description 2", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMDNfdGWROrcANcGEOe9KxlQC8c6-ZRRjMWDvtv5hM7g&s=10"),
+    Apps("App 3", "Description 3", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMDNfdGWROrcANcGEOe9KxlQC8c6-ZRRjMWDvtv5hM7g&s=10"),
   ];
   String message = "";
 
@@ -33,8 +34,9 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             //ESTE ES EL MAIN
-            ListView.builder(
-            itemCount: applications.length, // 1. Le decís cuántos elementos tiene tu lista
+            Expanded(
+              child: ListView.builder(
+              itemCount: applications.length, // 1. Le decís cuántos elementos tiene tu lista
             itemBuilder: (context, index) { // 2. Dibujás cada fila usando su posición (index)
             final elemento = applications[index];
     
@@ -45,16 +47,27 @@ class _HomePageState extends State<HomePage> {
               height: 50, 
               fit: BoxFit.cover,
             ), // La imagen a la izquierda
-          title: Text(elemento.name), // El título principal
-          subtitle: Text(elemento.description), // La descripción abajo del título
+          title: Text(
+                 elemento.name,
+                  textAlign: TextAlign.start,
+                  maxLines: 3,
+                 overflow: TextOverflow.ellipsis, // Si pasa las 3 líneas, mete el "..."
+                  style: TextStyle(
+                    fontSize: 16.0,                  // Tamaño de la letra
+                    fontWeight: FontWeight.w500,     // Grosor (medio/semi-negrita)
+                    color: textColor,          // Color del texto
+                    letterSpacing: 0.5,              // Espacio entre letras
+                  ),
+                ),
+          subtitle: Text(elemento.description, style: TextStyle(color: Colors.black)), // La descripción abajo del título
           trailing: const Icon(Icons.arrow_forward_ios, size: 16), // Una flechita coqueta a la derecha
           onTap: () {
         // Acá vas a programar la navegación a la pantalla de detalle
-          print("Tocaste: ${elemento.name}");
+          context.push('/detalle', extra: elemento);
       },
     );
   },
-)
+))
           ],
         ),
       ),
