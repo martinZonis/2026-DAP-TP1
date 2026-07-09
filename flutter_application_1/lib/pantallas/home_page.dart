@@ -47,12 +47,12 @@ class _HomePageState extends State<HomePage> {
     
             return ListTile(
               leading: Image.network(
-              elemento.image, // La URL de la imagen 
+              elemento.image, 
               width: 50, 
               height: 50, 
               fit: BoxFit.cover,
-            ), // La imagen a la izquierda
-          title: Text(
+            ), 
+              title: Text(
                  elemento.name,
                   textAlign: TextAlign.start,
                   maxLines: 3,
