@@ -14,7 +14,7 @@ class User {
   User(this.username, this.password);
 
   static List<User> users = [
-    User("user1", "password1"),
+    User(" ", " "),
     User("user2", "password2"),
   ];
 }

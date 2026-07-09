@@ -22,7 +22,8 @@ class AppPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Image.network(application.image),
+            Image.network(application.image, width: 200, height: 200),
+            Text(application.name, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             Text(application.description),
           ],
         ),

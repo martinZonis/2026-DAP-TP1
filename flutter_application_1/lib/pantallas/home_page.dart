@@ -12,9 +12,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<Apps> applications = [
-    Apps("App 1", "Description 1", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMDNfdGWROrcANcGEOe9KxlQC8c6-ZRRjMWDvtv5hM7g&s=10"),
-    Apps("App 2", "Description 2", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMDNfdGWROrcANcGEOe9KxlQC8c6-ZRRjMWDvtv5hM7g&s=10"),
-    Apps("App 3", "Description 3", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMDNfdGWROrcANcGEOe9KxlQC8c6-ZRRjMWDvtv5hM7g&s=10"),
+    Apps("Netflix", "La aplicación de streaming más popular del país", "https://th.bing.com/th?id=OIF.HMNXOKKwX%2fQ993jKhHpcvQ&r=0&rs=1&pid=ImgDetMain&o=7&rm=3"),
+    Apps("Spotify", "La plataforma de música en streaming más utilizada", "https://th.bing.com/th/id/R.3587f8e9df02e2990b93afb9cd6d2323?rik=UIGbn9QywKVSAA&pid=ImgRaw&r=0"),
+    Apps("Instagram", "La red social de fotos y videos más popular", "https://cdn.mos.cms.futurecdn.net/6dDoc8GV9fYUPExgLYPqqT.jpg"),
+    Apps("Twitter", "La plataforma de microblogging más utilizada", "https://tse4.mm.bing.net/th/id/OIP.jY15T_gnyLfYjqonIjm6wQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"),
+    Apps("Facebook", "La red social más grande del mundo", "https://tse1.mm.bing.net/th/id/OIP.AY1JxaizEyMJgHrVV525JwHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"),
+    Apps("TikTok", "La aplicación de videos cortos más popular del momento", "https://play-lh.googleusercontent.com/LdBITldj-tJxqLm-CsWSbnt4BMo2gk53cgM7mWIL-zn44m1ywLyQgxRsHKqp8r0qceXs"),
+    Apps("WhatsApp", "La aplicación de mensajería instantánea más utilizada", "https://static.vecteezy.com/system/resources/previews/014/414/681/original/whatsapp-square-logo-on-transparent-background-free-vector.jpg"),
+    Apps("YouTube", "El sitio de video más popular del mundo", "https://th.bing.com/th?id=OIF.4nxE5z%2bSOix6qo1AAZDXsg&r=0&rs=1&pid=ImgDetMain&o=7&rm=3"),
   ];
   String message = "";
 
