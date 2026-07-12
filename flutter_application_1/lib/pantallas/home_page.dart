@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_application_1/classes/product.dart';
-import 'package:flutter_application_1/pantallas/app_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -56,12 +55,10 @@ class _HomePageState extends State<HomePage> {
                  elemento.name,
                   textAlign: TextAlign.start,
                   maxLines: 3,
-                 overflow: TextOverflow.ellipsis, // Si pasa las 3 líneas, mete el "..."
                   style: TextStyle(
-                    fontSize: 16.0,                  // Tamaño de la letra
-                    fontWeight: FontWeight.w500,     // Grosor (medio/semi-negrita)
-                    color: textColor,          // Color del texto
-                    letterSpacing: 0.5,              // Espacio entre letras
+                    fontSize: 16.0,                  
+                    color: textColor,         
+                    letterSpacing: 0.5,            
                   ),
                 ),
           subtitle: Text(elemento.description, style: TextStyle(color: Colors.black)), // La descripción abajo del título
