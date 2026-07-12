@@ -40,8 +40,8 @@ class _HomePageState extends State<HomePage> {
             //ESTE ES EL MAIN
             Expanded(
               child: ListView.builder(
-              itemCount: applications.length, // 1. Le decís cuántos elementos tiene tu lista
-            itemBuilder: (context, index) { // 2. Dibujás cada fila usando su posición (index)
+              itemCount: applications.length, 
+            itemBuilder: (context, index) { 
             final elemento = applications[index];
     
             return ListTile(
